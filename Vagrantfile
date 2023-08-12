@@ -17,6 +17,7 @@ Vagrant.configure(2) do |config|
       if i == 1
         # Expose the nomad ports
         n.vm.network "forwarded_port", guest: 4646, host: 4646, auto_correct: true
+        n.vm.network "forwarded_port", guest: 8500, host: 8500, auto_correct: true
         n.vm.hostname = "nomad-server-node"
         n.vm.provision "file", source: "./nomad/server.hcl", destination: "/tmp/nomad.hcl"
         n.vm.provision "file", source: "./consul/server.hcl", destination: "/tmp/consul.hcl"
