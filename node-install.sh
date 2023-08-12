@@ -26,6 +26,10 @@ sudo apt-get update && sudo apt-get install nomad
 
 nomad -v
 
+sudo systemctl enable nomad.service
+sudo systemctl start nomad.service
+sudo systemctl status nomad.service
+
 echo "Installing Consul..."
 CONSUL_VERSION=1.12.2
 curl -sSL https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip > consul.zip
