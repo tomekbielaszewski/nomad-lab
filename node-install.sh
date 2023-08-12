@@ -33,24 +33,8 @@ sudo systemctl status nomad.service
 echo "Installing Consul..."
 sudo apt-get update && sudo apt-get install consul
 
-sudo install consul /usr/bin/consul
-(
-cat <<-EOF
-  [Unit]
-  Description=consul agent
-  Requires=network-online.target
-  After=network-online.target
-
-  [Service]
-  Restart=on-failure
-  ExecStart=/usr/bin/consul agent -dev
-  ExecReload=/bin/kill -HUP $MAINPID
-
-  [Install]
-  WantedBy=multi-user.target
-EOF
-) | sudo tee /etc/systemd/system/consul.service
 sudo systemctl enable consul.service
-sudo systemctl start consul
+sudo systemctl start consul.service
+sudo systemctl status consul.service
 
 nomad -autocomplete-install
