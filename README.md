@@ -9,6 +9,7 @@ workflows.
 `vagrant list-commands`  
 `vagrant status`  
 `vagrant halt`  
+`vagrant destroy -f`  
 `vagrant ssh nomad-node-1`  
 
 `sudo nomad agent -dev -bind 0.0.0.0 -network-interface='{{ GetDefaultInterfaces | attr "name" }}'`  
