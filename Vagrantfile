@@ -16,8 +16,13 @@ Vagrant.configure(2) do |config|
       if i == 1
         # Expose the nomad ports
         n.vm.network "forwarded_port", guest: 4646, host: 4646, auto_correct: true
+        n.vm.hostname = "nomad-server-node"
       end
-      n.vm.hostname = "nomad-node-#{i}"
+
+      if i > 1
+        n.vm.hostname = "nomad-node-#{i}"
+      end
+
       n.vm.network "private_network", ip: "172.16.1.#{i+100}"
     end
   end
