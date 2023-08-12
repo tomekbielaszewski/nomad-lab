@@ -1,4 +1,7 @@
-clients.hcl# Full configuration options can be found at https://www.consul.io/docs/agent/options.html
+# Full configuration options can be found at https://www.consul.io/docs/agent/options.html
+
+log_level = "DEBUG"
+log_file = "/var/log/"
 
 data_dir = "/opt/consul"
 
