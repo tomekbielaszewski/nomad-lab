@@ -8,3 +8,4 @@ ui_config{
 
 server = true
 bind_addr = "172.16.1.101"
+bootstrap_expect=1
