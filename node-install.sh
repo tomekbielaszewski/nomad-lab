@@ -26,12 +26,16 @@ sudo apt-get update && sudo apt-get install nomad
 
 nomad -v
 
+sudo cp /tmp/nomad.hcl /etc/nomad.d/nomad.hcl
+
 sudo systemctl enable nomad.service
 sudo systemctl start nomad.service
 sudo systemctl status nomad.service
 
 echo "Installing Consul..."
 sudo apt-get update && sudo apt-get install consul
+
+sudo cp /tmp/consul.hcl /etc/consul.d/consul.hcl
 
 sudo systemctl enable consul.service
 sudo systemctl start consul.service
