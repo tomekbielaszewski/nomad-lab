@@ -17,18 +17,14 @@ sudo service docker restart
 sudo usermod -aG docker vagrant
 sudo docker --version
 
-# Packages required for nomad & consul
-sudo apt-get install unzip curl vim -y
 
 echo "Installing Nomad..."
-NOMAD_VERSION=1.3.1
-cd /tmp/
-curl -sSL https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip -o nomad.zip
-unzip nomad.zip
-sudo install nomad /usr/bin/nomad
-sudo mkdir -p /etc/nomad.d
-sudo chmod a+w /etc/nomad.d
+sudo apt-get update && sudo apt-get install wget gpg coreutils
+wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt-get update && sudo apt-get install nomad
 
+nomad -v
 
 echo "Installing Consul..."
 CONSUL_VERSION=1.12.2
