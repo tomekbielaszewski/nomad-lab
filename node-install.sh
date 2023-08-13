@@ -37,7 +37,34 @@ sudo apt-get update && sudo apt-get install consul
 
 sudo cp /tmp/consul.hcl /etc/consul.d/consul.hcl
 
-sudo systemctl enable consul.service
+# consul will be restarted forcefully by systemd when using the official service definition
+# issue and fix found here: https://github.com/hashicorp/consul/issues/16844#issuecomment-1620170319
+sudo install consul /usr/bin/consul
+(
+cat <<-EOF
+[Unit]
+Description="HashiCorp Consul - A service mesh solution"
+Documentation=https://www.consul.io/
+Requires=network-online.target
+After=network-online.target
+ConditionFileNotEmpty=/etc/consul.d/consul.hcl
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/consul.d/consul.env
+User=consul
+Group=consul
+ExecStart=/usr/bin/consul agent -config-dir=/etc/consul.d/
+ExecReload=/bin/kill --signal HUP $MAINPID
+KillMode=process
+KillSignal=SIGTERM
+Restart=on-failure
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
+EOF
+) | sudo tee /etc/systemd/system/consul.service
 sudo systemctl start consul.service
 sudo systemctl status consul.service
 
