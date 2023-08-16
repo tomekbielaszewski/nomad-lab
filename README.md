@@ -45,6 +45,9 @@ Virtualbox installed
 `nomad node status`  
 `consul members`
 
+`nomad config validate /tmp/nomad.hcl`  
+`consul validate /tmp/consul.hcl`  
+
 ### Consul and Nomad works as systemd services
 
 Consul: `consul.service`  
