@@ -18,6 +18,13 @@ I will call this lab experiment complete when I will be able to:
 - see this working in Consul UI
 - see the app working in my browser on the host
 
+### Known issues
+- [x] `nomad node status` doesn't show all nodes
+- [x] `consul members` doesn't show all nodes
+- [ ] Nomad is unable to schedule nginx job like in https://blog.pavelsklenar.com/two-node-nomad-cluster/
+- [ ] Consul UI is not loading on host machine in the browser
+- [x] Nomad UI is not loading on host machine in the browser
+
 ## Requirements for the host machine
 
 Vagrant installed  
