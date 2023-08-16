@@ -25,6 +25,6 @@ plugin "raw_exec" {
 }
 
 # Consul agent will be running locally
-#consul {
-#  address = "127.0.0.1:8500"
-#}
+consul {
+  address = "127.0.0.1:8500"
+}

@@ -9,5 +9,6 @@ ui_config {
 }
 
 server = true
-bind_addr = "172.16.1.101"
+bind_addr = "0.0.0.0"
+advertise_addr = "172.16.1.101"
 bootstrap_expect=1 # in homelab environment there will be only one server
