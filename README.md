@@ -24,6 +24,9 @@ I will call this lab experiment complete when I will be able to:
 - [ ] Nomad is unable to schedule nginx job like in https://blog.pavelsklenar.com/two-node-nomad-cluster/
 - [ ] Consul UI is not loading on host machine in the browser
 - [x] Nomad UI is not loading on host machine in the browser
+- [ ] `nomad config validate` is complaining about bootstrap mode
+- [ ] `nomad config validate` is complaining about lack of mTLS
+- [ ] `consul validate` is complaining about bootstrap mode
 
 ## Requirements for the host machine
 
